@@ -11,6 +11,7 @@ React UI Library for applications.
 
 <!-- - [Quick Start](#quick-start)
 - [Development](#development) -->
+
 - [Ways to contribute](#ways-to-contribute)
 - [React and Typescript](#react-and-typescript)
 - [Feature request (TBA)](#feature-request-tba)
@@ -40,7 +41,7 @@ React UI Library for applications.
 
 <!-- Consult the contributing guidelines to understand our workflow. -->
 
-- **Improve documentation** - fix incomplete or missing docs, correct spelling and grammar mistakes, suggest wordings, examples, or explanations
+- **Create or improve documentation** - Write documentation for components and features, fix incomplete or missing docs, correct spelling and grammar mistakes, suggest wordings, examples, or explanations
 - **Issues** - work on outstanding issues to fix bugs and errors
 - **Suggest new features or components** - discuss and suggest new features or components we may add to the library
 
@@ -70,10 +71,21 @@ Heavily influenced by:
   - [ ] Badge
   - [ ] Pill
   - [ ] PasswordInput
+  - [ ] LoadingOverlay
+  - [ ] Notification
+  - [ ] Avatar
+  - [ ] Dropdown Menu
+  - [ ] Popover
+- [ ] HOC / Providers
   - [ ] NotificationsProvider
+  - [ ] ApiProvider
+- [ ] React Hooks
+  - [ ] useNotifications
+  - [ ] useApi
 - [x] Able to export a global stylesheet and input variables overrides
 - [ ] Utility functions or helper packages?? (currency.js, dayjs, numeral)
 - [ ] Create a template for feature requests and issue tracker
+- [ ] Standard packages (axios, react-query, formik)
 
 ## License
 

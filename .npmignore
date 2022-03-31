@@ -1,8 +1,9 @@
+.storybook
 .eslintrc.js                                        
 .prettierrc                                           
-.storybook
 jest.config.js
 rollup.config.js
 tests
 src
 tsconfig.json
+docs
