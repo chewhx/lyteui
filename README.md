@@ -64,6 +64,8 @@ Heavily influenced by:
 
 - [ ] Produce basic components and tests
   - [x] Button
+  - [ ] Avatar
+  - [ ] Spinner
   - [x] TextInput
   - [x] NumberInput
   - [x] SelectInput

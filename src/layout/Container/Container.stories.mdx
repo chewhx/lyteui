@@ -1,0 +1,76 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Container from './Container';
+import Row from '../Row/Row';
+import Column from '../Column/Column';
+// import TypographyProvider from '../../providers/TypographyProvider/TypographyProvider';
+
+<Meta title="Layout/Container" />
+
+# Container
+
+<Container style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container
+</Container>
+<Container fluid style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container fluid
+</Container>
+<Container fluid="sm" style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container - fluid - sm
+</Container>
+<Container fluid="md" style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container - fluid - md
+</Container>
+<Container fluid="lg" style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container - fluid - lg
+</Container>
+<Container fluid="xl" style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container - fluid - xl
+</Container>
+<Container fluid="xxl" style={{ backgroundColor: 'red', marginBottom: '1rem' }}>
+	Container - fluid - xxl
+</Container>
+
+# Container - Row - Column
+
+<Container fluid="lg">
+	<Row numColumns={4}>
+		<Column
+			style={{
+				backgroundColor: 'grey',
+			}}
+		>
+			This is 1
+		</Column>
+		<Column
+			style={{
+				backgroundColor: 'blue',
+			}}
+		>
+			This is 2
+		</Column>
+		<Column
+			style={{
+				backgroundColor: 'pink',
+			}}
+		>
+			This is 3
+		</Column>
+		<Column
+			style={{
+				backgroundColor: 'grey',
+			}}
+		>
+			This is 4
+		</Column>
+		<Column>This is 5</Column>
+		<Column>This is 6</Column>
+		<Column>This is 7</Column>
+		<Column>This is 8</Column>
+		<Column>This is 9</Column>
+		<Column>This is 10</Column>
+		<Column>This is 11</Column>
+		<Column>This is 12</Column>
+		<Column>This is 13</Column>
+		<Column>This is 14</Column>
+	</Row>
+</Container>

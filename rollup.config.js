@@ -38,6 +38,7 @@ export default [
 					'utils',
 					'docs',
 					'node_modules',
+					'images',
 				],
 			}),
 			terser(),

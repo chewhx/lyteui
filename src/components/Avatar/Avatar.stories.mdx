@@ -1,0 +1,88 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Avatar from './Avatar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBell } from '@fortawesome/free-regular-svg-icons';
+
+<Meta title="Avatar" />
+
+# Avatars
+
+<>
+	{['xs', 'sm', 'md', 'lg', 'xl'].map((e) => (
+		<Avatar avatarSize={e} key={e} style={{ margin: '1rem' }} />
+	))}
+</>
+
+# Radius
+
+<>
+	<Avatar style={{ margin: '1rem' }} />
+	{['xs', 'sm', 'md', 'lg', 'xl'].map((e) => (
+		<Avatar radiusSize={e} key={e} style={{ margin: '1rem' }} />
+	))}
+</>
+
+# Colors
+
+<Canvas>
+	<Story name="Colors">
+		{[
+			'primary',
+			'secondary',
+			'success',
+			'info',
+			'warning',
+			'danger',
+			'light',
+			'dark',
+		].map((e) => (
+			<Avatar key={e} variant={e} radiusSize="xl" style={{ margin: '1rem' }} />
+		))}
+	</Story>
+</Canvas>
+
+# Images
+
+<Avatar avatarSize="xs">John Doe</Avatar>
+<Avatar avatarSize="sm">John Doe</Avatar>
+<Avatar avatarSize="md">John Doe</Avatar>
+<Avatar avatarSize="lg">John Doe</Avatar>
+<Avatar avatarSize="xl">John Doe</Avatar>
+<Avatar style={{ margin: '1rem' }} radiusSize="xs">
+	<FontAwesomeIcon icon={faBell} />
+</Avatar>
+<Avatar style={{ margin: '1rem' }} radiusSize="sm">
+	<FontAwesomeIcon icon={faBell} />
+</Avatar>
+<Avatar style={{ margin: '1rem' }} radiusSize="md">
+	John Doe
+</Avatar>
+<Avatar style={{ margin: '1rem' }} radiusSize="lg">
+	<FontAwesomeIcon icon={faBell} />
+</Avatar>
+<Avatar
+	style={{ margin: '1rem' }}
+	radiusSize="xl"
+	avatarSize="sm"
+	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+/>
+<Avatar
+	style={{ margin: '1rem' }}
+	radiusSize="xl"
+	avatarSize="md"
+	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+/>
+<Avatar
+	style={{ margin: '1rem' }}
+	radiusSize="xl"
+	avatarSize="lg"
+	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+/>
+<Avatar
+	style={{ margin: '1rem' }}
+	radiusSize="xl"
+	avatarSize="xl"
+	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+>
+	SM
+</Avatar>

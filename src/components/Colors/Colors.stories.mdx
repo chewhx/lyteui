@@ -1,0 +1,135 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import useColors from '../../hooks/useColors';
+
+<Meta title="Styles/Colors" />
+
+# Colors
+
+## Theme Colors
+
+<div className="row">
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-primary text-white">Primary</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-secondary text-white">Secondary</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-success text-white">Success</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-danger text-white">Danger</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-warning text-dark">Warning</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-info text-dark">Info</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-light text-dark">Light</div>
+	</div>
+	<div className="col-md-4">
+		<div className="p-3 mb-3 bg-dark text-white">Dark</div>
+	</div>
+</div>
+
+## useColors hook
+
+```jsx
+const colors = useColors();
+
+colors.primary = '#122ecc';
+
+{
+  "primary": " #122ecc",
+  "secondary": " #6c757d",
+  "success": " #1e4723",
+  "info": " #128abf",
+  "warning": " #ff8100",
+  "danger": " #e10014",
+  "light": " #f8f9fa",
+  "dark": " #212529"
+}
+
+```
+
+export const Colors = () => {
+	const colors = useColors();
+	return (
+		<div className="row">
+			<div className="col-4">
+				{Object.entries(colors.theme).map(([name, value]) => (
+					<div style={{ backgroundColor: value, padding: '1rem' }}>
+						{name} - {value}
+					</div>
+				))}
+			</div>
+			<div className="col-4">
+				{Object.entries(colors.palette.primary).map(([name, value]) => (
+					<div style={{ backgroundColor: value, padding: '1rem' }}>
+						Primary {name} - {value}
+					</div>
+				))}
+			</div>
+			<div className="col-4">
+				{Object.entries(colors.palette.secondary).map(([name, value]) => (
+					<div style={{ backgroundColor: value, padding: '1rem' }}>
+						Secondary {name} - {value}
+					</div>
+				))}
+			</div>
+			<div className="col-4">
+				{Object.entries(colors.palette.success).map(([name, value]) => (
+					<div style={{ backgroundColor: value, padding: '1rem' }}>
+						Success {name} - {value}
+					</div>
+				))}
+			</div>
+			<div className="col-4">
+				{Object.entries(colors.palette.info).map(([name, value]) => (
+					<div style={{ backgroundColor: value, padding: '1rem' }}>
+						Info {name} - {value}
+					</div>
+				))}
+			</div>
+		</div>
+	);
+};
+
+<Colors />
+
+## Core Colors
+
+<div className="row">
+	{[
+		'blue',
+		'indigo',
+		'purple',
+		'pink',
+		'red',
+		'orange',
+		'yellow',
+		'green',
+		'teal',
+		'cyan',
+		'gray',
+		'white',
+	].map((e) => (
+		<div className="col-md-4 mb-3">
+			<div className={`p-3 mb-2 position-relative swatch-${e}`}>
+				<strong className="d-block">${e}</strong>
+				#0d6efd
+			</div>
+			<div className={`p-3 bg-${e}-100`}>{`$${e}-100`}</div>
+			<div className={`p-3 text-white bg-${e}-200`}>{`$${e}-200`}</div>
+			<div className={`p-3 text-white bg-${e}-300`}>{`$${e}-300`}</div>
+			<div className={`p-3 text-white bg-${e}-400`}>{`$${e}-400`}</div>
+			<div className={`p-3 text-white bg-${e}-500`}>{`$${e}-500`}</div>
+			<div className={`p-3 text-white bg-${e}-600`}>{`$${e}-600`}</div>
+			<div className={`p-3 text-white bg-${e}-700`}>{`$${e}-700`}</div>
+			<div className={`p-3 text-white bg-${e}-800`}>{`$${e}-800`}</div>
+			<div className={`p-3 text-white bg-${e}-900`}>{`$${e}-900`}</div>
+		</div>
+	))}
+</div>

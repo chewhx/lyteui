@@ -1,0 +1,145 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Button from './Button';
+import ThemeProvider from '../../theme/ThemeProvider';
+
+<Meta title="Actions/Button" />
+
+# Button
+
+## Default Button
+
+<Canvas>
+	<Story name="Default">
+		<Button>LytePay</Button>
+	</Story>
+</Canvas>
+
+## Theme Colors
+
+<Canvas>
+	<Story name="Colors">
+		{[
+			'primary',
+			'secondary',
+			'success',
+			'info',
+			'warning',
+			'danger',
+			'light',
+			'dark',
+		].map((e) => (
+			<Button key={e} color={e}>
+				{e}
+			</Button>
+		))}
+	</Story>
+</Canvas>
+
+## Size
+
+<Canvas>
+	<Story name="Sizes">
+		<Button size="sm">Large</Button>
+		<Button>Large</Button>
+		<Button size="lg">Large</Button>
+	</Story>
+</Canvas>
+
+## Radius
+
+<Canvas>
+	<Story name="Radius">
+		<Button radius="sm">Sm Radius</Button>
+		<Button>Normal Radius</Button>
+		<Button radius="lg">Lg Radius</Button>
+		<Button radius={22}>22 Radius</Button>
+		<Button radius={10}>10 Radius</Button>
+		<Button radius="15px">15px Radius</Button>
+		<Button radius="1.5rem">1.5rem Radius</Button>
+	</Story>
+</Canvas>
+
+## Full Width Button
+
+<Canvas>
+	<Story name="Full Width">
+		<Button size="lg" fullWidth>
+			Full Width Button
+		</Button>
+	</Story>
+</Canvas>
+
+## Custom Colors
+
+<Canvas>
+	<Story name="Custom Colors">
+		<Button color="rgb(250,128,114)">Salmon</Button>
+		<Button color="#00FF00">Lime</Button>
+		<Button color="#00BFFF">Deep Sky Blue</Button>
+		<Button color="rgb(250,128,114)" variant="outline">
+			Salmon
+		</Button>
+		<Button color="#00FF00" variant="outline">
+			Lime
+		</Button>
+		<Button color="#00BFFF" variant="outline">
+			Deep Sky Blue
+		</Button>
+	</Story>
+</Canvas>
+
+## Variant
+
+<Canvas>
+	<Story name="Variant">
+		{[
+			'primary',
+			'secondary',
+			'success',
+			'info',
+			'warning',
+			'danger',
+			'light',
+			'dark',
+		].map((e) => (
+			<Button key={'outline-' + e} variant="outline" color={e}>
+				{e}
+			</Button>
+		))}
+	</Story>
+</Canvas>
+
+## Loading
+
+<Canvas>
+	<Story name="Loading">
+		{[
+			'primary',
+			'secondary',
+			'success',
+			'info',
+			'warning',
+			'danger',
+			'light',
+			'dark',
+		].map((e) => (
+			<>
+				<Button key={'outline-' + e} isLoading variant="outline" color={e}>
+					{e}
+				</Button>
+				<Button key={e} isLoading color={e}>
+					{e}
+				</Button>
+				<Button
+					key={'outline-' + e}
+					isLoading
+					loaderPosition="right"
+					variant="outline"
+					color={e}
+				>
+					{e}
+				</Button>
+			</>
+		))}
+	</Story>
+</Canvas>

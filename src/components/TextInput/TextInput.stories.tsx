@@ -2,7 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import TextInput from './TextInput';
-import '../../scss/index.scss';
+// import '../../scss/index.scss';
 import { RadiusValues } from '../Input/Input';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export

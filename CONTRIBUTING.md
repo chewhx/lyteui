@@ -17,3 +17,20 @@ A typical contributor workflow might look like this:
 3. Write your code. 🔨 Refer to the coding guidelines.
 4. Write your component story.
 5. Include unit tests when necessary
+
+### Git Commits
+
+Where possible, make small and meaningful commits, with prefixes for the nature and type of the commit.
+
+Eg. `feat-add-new-alert-component`
+
+| Type       | Description                                     |
+| ---------- | ----------------------------------------------- |
+| `feat`     | A new feature                                   |
+| `fix`      | A bug fix                                       |
+| `docs`     | Documentation changes only                      |
+| `style`    | Style changes not affecting meaning of the code |
+| `refactor` | Major code changes which is not bug or feature  |
+| `test`     | Add missing tests or correct existing tests     |
+| `chore`    | Clean ups and changes other than src and tests  |
+| `revert`   | Reverts a previous commit                       |
