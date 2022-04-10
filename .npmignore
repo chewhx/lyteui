@@ -1,9 +1,14 @@
 .storybook
+.browserslistrc
+.eslintignore                                   
 .eslintrc.js                                        
-.prettierrc                                           
+.gitignore                                   
+.prettierrc
+*.md                               
 jest.config.js
 rollup.config.js
+tsconfig.json
 tests
 src
-tsconfig.json
 docs
+tools
