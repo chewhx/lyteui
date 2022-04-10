@@ -60,22 +60,29 @@ Heavily influenced by:
 
 ## Developer contribution and pull requests (TBA)
 
+## Publish
+
+- Main exports from each folders' `index.ts`
+- Main exports from `index.ts` at `/src`
+
 ## Todos / Roadmap
 
 - [ ] Produce basic components and tests
+  - [x] UnstyledButton
   - [x] Button
-  - [ ] Avatar
-  - [ ] Spinner
-  - [x] TextInput
-  - [x] NumberInput
-  - [x] SelectInput
-  - [x] Input
+  - [x] Spinner
+  - [x] Avatar
+  - [ ] Input
+  - [ ] ThemeProvider
+  - [ ] TypographyProvider
+  - [ ] TextInput
+  - [ ] NumberInput
+  - [ ] SelectInput
+  - [ ] LoadingOverlay
+  - [ ] Notification
   - [ ] Badge
   - [ ] Pill
   - [ ] PasswordInput
-  - [ ] LoadingOverlay
-  - [ ] Notification
-  - [ ] Avatar
   - [ ] Dropdown Menu
   - [ ] Popover
 - [ ] HOC / Providers
@@ -85,6 +92,7 @@ Heavily influenced by:
   - [ ] useNotifications
   - [ ] useApi
 - [x] Able to export a global stylesheet and input variables overrides
+- [ ] Add [plop](https://www.npmjs.com/package/plop) to generate template files for components, hooks, functions
 - [ ] Utility functions or helper packages?? (currency.js, dayjs, numeral)
 - [ ] Create a template for feature requests and issue tracker
 - [ ] Standard packages (axios, react-query, formik)

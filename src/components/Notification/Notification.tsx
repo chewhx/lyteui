@@ -9,7 +9,7 @@ import {
 	faCircleExclamation,
 	faCircleInfo,
 } from '@fortawesome/free-solid-svg-icons';
-import { NotificationItem } from '../../providers/NotificationsProvider/NotificationsProvider';
+import { NotificationItem } from '../NotificationsProvider/NotificationsProvider';
 
 type NotificationProps = NotificationItem & {
 	remove: (id: number | string) => void;

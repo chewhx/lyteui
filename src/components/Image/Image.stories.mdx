@@ -1,0 +1,56 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import Image from './Image';
+
+<Meta title="Components/Image" />
+
+# Image
+
+[Souce code](https://github.com/chewhx/lyteui/blob/main/src/components/Image/Image.tsx)
+
+```jsx
+import { Image } from 'lyteui';
+```
+
+## Overview
+
+Image component to display image from an URL.
+
+<Canvas>
+	<div style={{ height: '240px', width: '200px', border: '2px dashed black' }}>
+		<Image src="https://picsum.photos/id/237/240/200" alt="other" />
+	</div>
+</Canvas>
+
+## API
+
+<ArgsTable of={Image} />
+
+## Fluid
+
+Image will be contained within the parent.
+
+<Canvas>
+	<div style={{ height: '300px', width: '300px', border: '2px dashed black' }}>
+		<Image fluid src="https://picsum.photos/id/237/600/400" alt="other" />
+	</div>
+</Canvas>
+
+## Radius
+
+Adjust border radius of the image.
+
+<Canvas>
+	<Image fluid src="https://picsum.photos/id/237/300/200" alt="other" />
+	<Image
+		radius="sm"
+		fluid
+		src="https://picsum.photos/id/237/300/200"
+		alt="other"
+	/>
+	<Image
+		radius="lg"
+		fluid
+		src="https://picsum.photos/id/237/300/200"
+		alt="other"
+	/>
+</Canvas>

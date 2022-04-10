@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 // import '../../scss/index.scss';
-import NotificationsProvider from '../../providers/NotificationsProvider/NotificationsProvider';
+import NotificationsProvider from '../NotificationsProvider/NotificationsProvider';
 import Button from '../Button/Button';
 import useNotify from '../../hooks/useNotify';
 import useNotifications from '../../hooks/useNotifications';

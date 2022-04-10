@@ -1,0 +1,120 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import Badge from './Badge';
+
+<Meta title="Components/Badge" />
+
+# Badge
+
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/Badge/Badge.tsx)
+
+```jsx
+import { Badge } from 'lyteui';
+```
+
+## Overview
+
+Present metadata or emphasize information with minimal word values. Usually used to indicate statuses of items in invoicing, boost, and cashouts.
+
+<Canvas>
+	<Badge>Pending</Badge>
+	<Badge theme="warning">Draft</Badge>
+	<Badge theme="danger">Rejected</Badge>
+	<Badge theme="success">Success</Badge>
+	<Badge theme="dark">Cancelled</Badge>
+	<Badge theme="primary">Sent</Badge>
+</Canvas>
+
+## API
+
+<ArgsTable of={Badge} />
+
+## Pill
+
+A pill version of the badge.
+
+<Canvas>
+	<Badge pill>Pending</Badge>
+	<Badge pill theme="warning">Draft</Badge>
+	<Badge pill theme="danger">Rejected</Badge>
+	<Badge pill theme="success">Success</Badge>
+	<Badge pill theme="dark">Cancelled</Badge>
+	<Badge pill theme="primary">Sent</Badge>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+	<Badge size="xs">Badge XS</Badge>
+	<Badge size="sm">Badge SM</Badge>
+	<Badge size="md">Badge Default</Badge>
+	<Badge size="lg">Badge LG</Badge>
+	<Badge size="xl">Badge XL</Badge>
+</Canvas>
+
+## Theme colors
+
+<Canvas>
+	<Badge theme="primary">primary</Badge>
+	<Badge theme="secondary">secondary</Badge>
+	<Badge theme="success">success</Badge>
+	<Badge theme="info">info</Badge>
+	<Badge theme="warning">warning</Badge>
+	<Badge theme="danger">danger</Badge>
+	<Badge theme="light">light</Badge>
+	<Badge theme="dark">dark</Badge>
+</Canvas>
+
+## Text colors
+
+You have to option to customize text colors by passing a theme color into `textTheme`
+
+<Canvas>
+	<Badge theme="danger" textTheme="warning">
+		Warning Text
+	</Badge>
+	<Badge theme="light" textTheme="primary">
+		Primary Text
+	</Badge>
+	<Badge theme="light" textTheme="danger">
+		Danger Text
+	</Badge>
+	<Badge theme="dark" textTheme="red">
+		Red Text
+	</Badge>
+	<Badge theme="warning" textTheme="danger">
+		Danger Text
+	</Badge>
+</Canvas>
+
+## Outline variant
+
+<Canvas>
+	<Badge variant="outline" theme="primary">primary</Badge>
+	<Badge variant="outline" theme="secondary">secondary</Badge>
+	<Badge variant="outline" theme="success">success</Badge>
+	<Badge variant="outline" theme="info">info</Badge>
+	<Badge variant="outline" theme="warning">warning</Badge>
+	<Badge variant="outline" theme="danger">danger</Badge>
+	<Badge variant="outline" theme="light">light</Badge>
+	<Badge variant="outline" theme="dark">dark</Badge>
+	<Badge variant="outline" pill theme="primary">primary</Badge>
+	<Badge variant="outline" pill theme="secondary">secondary</Badge>
+	<Badge variant="outline" pill theme="success">success</Badge>
+	<Badge variant="outline" pill theme="info">info</Badge>
+	<Badge variant="outline" pill theme="warning">warning</Badge>
+	<Badge variant="outline" pill theme="danger">danger</Badge>
+	<Badge variant="outline" pill theme="light">light</Badge>
+	<Badge variant="outline" pill theme="dark">dark</Badge>
+</Canvas>
+
+## Transparent background
+
+Light outlined badges have transparent background
+
+<Canvas>
+	<div style={{ background: '#00000098', padding: '1rem' }}>
+		<Badge pill variant="outline" theme="light">
+			Transparent Background
+		</Badge>
+	</div>
+</Canvas>

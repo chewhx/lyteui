@@ -3,40 +3,37 @@ import PropTypes from 'prop-types';
 import getInitialsFromName from '../../utils/getInitialsFromName';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
-import { LyteSizes } from '../../theme/types/LyteSizes';
+import { DefaultSizes } from '../../theme/types/DefaultSizes';
 import { StyledAvatar, StyledAvatarImg } from './Avatar.styled';
-import { BootstrapThemeColorsType } from '../../theme/constants/BootstrapThemeColors';
+import { ThemeColorsType } from '../../theme/types/ThemeColors';
 
 export type AvatarProps = React.HTMLAttributes<HTMLDivElement> & {
-	avatarSize?: LyteSizes;
-	radiusSize?: LyteSizes;
-	variant?: BootstrapThemeColorsType;
+	/**Adjusts overall size */
+	size?: DefaultSizes;
+	/**Adjusts the border-radius */
+	radius?: DefaultSizes;
+	/**Change background to a theme color */
+	theme?: ThemeColorsType;
+	/**URL of profile image  */
 	img?: string;
 };
 
 const defaultProps = {
-	avatarSize: 'md' as LyteSizes,
+	size: 'md' as DefaultSizes,
+	theme: 'primary' as ThemeColorsType,
 };
 
 const propTypes = {
-	avatarSize: PropTypes.oneOf<LyteSizes>(['xs', 'sm', 'md', 'lg', 'xl']),
-	radiusSize: PropTypes.oneOf<LyteSizes>(['xs', 'sm', 'md', 'lg', 'xl']),
-	variant: PropTypes.oneOf<BootstrapThemeColorsType>([
-		'primary',
-		'secondary',
-		'success',
-		'info',
-		'warning',
-		'danger',
-		'light',
-		'dark',
-	]),
+	size: PropTypes.oneOf<DefaultSizes>([]),
+	radius: PropTypes.oneOf<DefaultSizes>([]),
+	theme: PropTypes.oneOf<ThemeColorsType>([]),
+	img: PropTypes.string,
 };
 
 const Avatar: React.FC<AvatarProps> = React.forwardRef<
 	HTMLDivElement,
 	AvatarProps
->(({ radiusSize, img, children, ...rest }, ref) => {
+>(({ img, children, ...rest }, ref) => {
 	const output = !children ? (
 		<FontAwesomeIcon icon={faCircleUser} />
 	) : typeof children === 'string' ? (
@@ -46,7 +43,7 @@ const Avatar: React.FC<AvatarProps> = React.forwardRef<
 	);
 
 	return (
-		<StyledAvatar radiusSize={radiusSize} {...rest} ref={ref}>
+		<StyledAvatar {...rest} ref={ref}>
 			{!img ? output : <StyledAvatarImg src={img} />}
 		</StyledAvatar>
 	);

@@ -1,0 +1,88 @@
+import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import Input from './Input';
+
+<Meta title="Form/Input" />
+
+# Input
+
+Base input field component.
+
+**To create forms, use other specific input components, and not this directly.**
+
+```jsx
+import { Input } from 'lyteui';
+```
+
+[View source code](https://github.com/chewhx/lyteui/blob/main/src/components/Input/Input.tsx)
+
+| Props      | Type                                         | Default | Description                        |
+| ---------- | -------------------------------------------- | ------- | ---------------------------------- |
+| radius?    | DefaultSizes                                 | "md"    | Adjusts the border-radius.         |
+| readOnly?  | boolean                                      | none    | Disables the input field.          |
+| disabled?  | boolean                                      | none    | Disables the input field.          |
+| plaintext? | boolean                                      | none    | Removes borders and displays text. |
+| htmlSize?  | number                                       | none    | Pass a html size prop to input.    |
+| size?      | "sm" \| "md" \| "lg"                         | "md"    | Adjusts size of input field.       |
+| value?     | string \| string[] \| number                 | none    | Value of input field.              |
+| onChange?  | `React.ChangeEventHandler<HTMLInputElement>` | none    | onChange handler.                  |
+| type?      | Any supported types                          | none    | HTML types for input.              |
+| isValid?   | boolean                                      | none    | Validated state for input.         |
+| isInvalid? | boolean                                      | none    | Error state for input.             |
+| fullWidth? | boolean                                      | none    | Adjusts width to 100%.             |
+
+## Default
+
+<Canvas>
+	<Input placeholder="Default" />
+</Canvas>
+
+## Radius
+
+<Canvas>
+	<Input placeholder="radius xs" radius="xs" />
+	<Input placeholder="radius sm" radius="sm" />
+	<Input placeholder="radius md" radius="md" />
+	<Input placeholder="radius lg" radius="lg" />
+	<Input placeholder="radius xl" radius="xl" />
+</Canvas>
+
+## Sizes
+
+<Canvas>
+	<Input placeholder="size sm" size="sm" />
+	<Input placeholder="size md" size="md" />
+	<Input placeholder="size lg" size="lg" />
+</Canvas>
+
+## Types
+
+Text, number, date, datetime, file, color, password
+
+<Canvas>
+	<Input type="text" placeholder="text" />
+	<Input type="number" placeholder="number" />
+	<Input type="date" placeholder="date" />
+	<Input type="time" placeholder="time" />
+	<Input type="file" placeholder="file" />
+	<Input type="color" />
+	<Input type="password" placeholder="password" />
+</Canvas>
+
+## Full width
+
+<Canvas>
+	<div style={{ width: '500px', margin: 'auto' }}>
+		<Input placeholder="sm" fullWidth size="sm" />
+		<Input placeholder="md" fullWidth size="md" />
+		<Input placeholder="lg" fullWidth size="lg" />
+	</div>
+</Canvas>
+
+## Validation
+
+Display a validation state to indicate feedback to user's input
+
+<Canvas>
+	<Input placeholder="valid" isValid />
+	<Input placeholder="invalid" isInvalid />
+</Canvas>

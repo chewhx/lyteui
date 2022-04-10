@@ -8,13 +8,3 @@ export enum BootstrapThemeColors {
 	light = '#f8f9fa',
 	dark = '#212529',
 }
-
-export type BootstrapThemeColorsType =
-	| 'primary'
-	| 'secondary'
-	| 'success'
-	| 'info'
-	| 'warning'
-	| 'danger'
-	| 'light'
-	| 'dark';

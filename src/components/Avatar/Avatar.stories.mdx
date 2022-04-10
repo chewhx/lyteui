@@ -1,88 +1,127 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import Avatar from './Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBell } from '@fortawesome/free-regular-svg-icons';
+import { faBell, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
+import UnstyledButton from '../Button/UnstyledButton/UnstyledButton';
 
-<Meta title="Avatar" />
+<Meta title="Components/Avatar" />
 
-# Avatars
+# Avatar
 
-<>
-	{['xs', 'sm', 'md', 'lg', 'xl'].map((e) => (
-		<Avatar avatarSize={e} key={e} style={{ margin: '1rem' }} />
-	))}
-</>
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/Avatar/Avatar.tsx)
 
-# Radius
+```jsx
+import { Avatar } from 'lyteui';
+```
 
-<>
-	<Avatar style={{ margin: '1rem' }} />
-	{['xs', 'sm', 'md', 'lg', 'xl'].map((e) => (
-		<Avatar radiusSize={e} key={e} style={{ margin: '1rem' }} />
-	))}
-</>
+## Overview
 
-# Colors
+Display user profile picture, image, icon, or set of initials.
 
 <Canvas>
-	<Story name="Colors">
-		{[
-			'primary',
-			'secondary',
-			'success',
-			'info',
-			'warning',
-			'danger',
-			'light',
-			'dark',
-		].map((e) => (
-			<Avatar key={e} variant={e} radiusSize="xl" style={{ margin: '1rem' }} />
-		))}
-	</Story>
+	<Avatar />
 </Canvas>
 
-# Images
+## API
 
-<Avatar avatarSize="xs">John Doe</Avatar>
-<Avatar avatarSize="sm">John Doe</Avatar>
-<Avatar avatarSize="md">John Doe</Avatar>
-<Avatar avatarSize="lg">John Doe</Avatar>
-<Avatar avatarSize="xl">John Doe</Avatar>
-<Avatar style={{ margin: '1rem' }} radiusSize="xs">
-	<FontAwesomeIcon icon={faBell} />
-</Avatar>
-<Avatar style={{ margin: '1rem' }} radiusSize="sm">
-	<FontAwesomeIcon icon={faBell} />
-</Avatar>
-<Avatar style={{ margin: '1rem' }} radiusSize="md">
-	John Doe
-</Avatar>
-<Avatar style={{ margin: '1rem' }} radiusSize="lg">
-	<FontAwesomeIcon icon={faBell} />
-</Avatar>
-<Avatar
-	style={{ margin: '1rem' }}
-	radiusSize="xl"
-	avatarSize="sm"
-	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
-/>
-<Avatar
-	style={{ margin: '1rem' }}
-	radiusSize="xl"
-	avatarSize="md"
-	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
-/>
-<Avatar
-	style={{ margin: '1rem' }}
-	radiusSize="xl"
-	avatarSize="lg"
-	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
-/>
-<Avatar
-	style={{ margin: '1rem' }}
-	radiusSize="xl"
-	avatarSize="xl"
-	img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
->
-	SM
-</Avatar>
+<ArgsTable of={Avatar} />
+
+## Radius
+
+<Canvas>
+	<Avatar />
+	<Avatar radius="xs" />
+	<Avatar radius="sm" />
+	<Avatar radius="md" />
+	<Avatar radius="lg" />
+	<Avatar radius="xl" />
+</Canvas>
+
+## Sizes
+
+<Canvas>
+	<Avatar radius="xl" size="xs" />
+	<Avatar radius="xl" size="sm" />
+	<Avatar radius="xl" size="md" />
+	<Avatar radius="xl" size="lg" />
+	<Avatar radius="xl" size="xl" />
+</Canvas>
+
+## Theme colors
+
+<Canvas>
+	<Avatar theme="primary" size="md" radius="xl" />
+	<Avatar theme="secondary" size="md" radius="xl" />
+	<Avatar theme="success" size="md" radius="xl" />
+	<Avatar theme="info" size="md" radius="xl" />
+	<Avatar theme="warning" size="md" radius="xl" />
+	<Avatar theme="danger" size="md" radius="xl" />
+	<Avatar theme="light" size="md" radius="xl" />
+	<Avatar theme="dark" size="md" radius="xl" />
+</Canvas>
+
+## Initials
+
+String of characters will be truncated to one or two letters initials.
+
+<Canvas>
+	<Avatar theme="primary" size="sm" radius="xl">
+		J
+	</Avatar>
+	<Avatar theme="secondary" size="md" radius="xl">
+		Joey Tribbiani
+	</Avatar>
+	<Avatar theme="success" size="lg" radius="xl">
+		Ross Geller
+	</Avatar>
+</Canvas>
+
+## Icons
+
+<Canvas>
+	<Avatar radius="xl" theme="warning">
+		<FontAwesomeIcon icon={faBell} />
+	</Avatar>
+	<Avatar radius="lg" theme="info">
+		<FontAwesomeIcon icon={faCircleCheck} />
+	</Avatar>
+</Canvas>
+
+## Profile image
+
+<Canvas>
+	<Avatar
+		radius="xl"
+		size="sm"
+		img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+	/>
+	<Avatar
+		radius="xl"
+		size="md"
+		img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+	/>
+	<Avatar
+		radius="xl"
+		size="lg"
+		img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+	/>
+	<Avatar
+		radius="xl"
+		size="xl"
+		img="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXZhdGFyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=1400&q=60"
+	>
+		SM
+	</Avatar>
+</Canvas>
+
+## Clickable
+
+Wrap avatar in `UnstyledButton` for button properties
+
+<Canvas>
+	<UnstyledButton href="https://www.lytepay.co/" target="__blank">
+		<Avatar radius="xl" size="md">
+			LY
+		</Avatar>
+	</UnstyledButton>
+</Canvas>

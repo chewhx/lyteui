@@ -71,7 +71,7 @@ const TextInput: FC<TextInputProps> = React.forwardRef<
 					id={id}
 					type="text"
 					isInvalid={hasError}
-					ref={ref}
+					_ref={ref}
 				/>
 			</InputWrapper>
 		);

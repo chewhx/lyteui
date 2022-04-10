@@ -1,25 +1,21 @@
 import React from 'react';
 import { StyledSpinner } from './Spinner.styled';
 import PropTypes from 'prop-types';
-import { LyteSizes } from '../../theme/types/LyteSizes';
+import { DefaultSizes } from '../../theme/types/DefaultSizes';
+import { ThemeColorsType } from '../../theme/types/ThemeColors';
 
 export type SpinnerProps = React.HTMLAttributes<HTMLSpanElement> & {
-	size?: LyteSizes;
+	size?: DefaultSizes;
+	theme?: ThemeColorsType;
 };
 
-const propTypes = {
-	children: PropTypes.node,
-};
+const propTypes = {};
 
 const Spinner: React.FC<SpinnerProps> = React.forwardRef<
 	HTMLSpanElement,
 	SpinnerProps
->(({ children, ...rest }, ref) => {
-	return (
-		<StyledSpinner {...rest} ref={ref}>
-			{children}
-		</StyledSpinner>
-	);
+>((props, ref) => {
+	return <StyledSpinner {...props} ref={ref} />;
 });
 
 Spinner.displayName = 'Spinner';

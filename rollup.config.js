@@ -4,7 +4,6 @@ import typescript from '@rollup/plugin-typescript';
 import dts from 'rollup-plugin-dts';
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import image from '@rollup/plugin-image';
 
 import * as packageJson from './package.json';
 
@@ -34,15 +33,13 @@ export default [
 					'**/*.spec.ts',
 					'**/*.spec.tsx',
 					'src/**/**/*.stories.tsx',
-					'scss',
-					'utils',
-					'docs',
 					'node_modules',
-					'images',
+					'assets',
+					'utils',
+					'tools',
 				],
 			}),
 			terser(),
-			image(),
 		],
 		external: ['react', 'react-dom', 'styled-components'],
 	},

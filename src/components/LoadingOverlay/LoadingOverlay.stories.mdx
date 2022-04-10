@@ -1,0 +1,52 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import LoadingOverlay from './LoadingOverlay';
+import Button from '../Button/Button';
+import { useState } from 'react';
+
+<Meta title="Components/LoadingOverlay" />
+
+# Loading Overlay
+
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/LoadingOverlay/LoadingOverlay.tsx)
+
+```jsx
+import { LoadingOverlay } from 'lyteui';
+```
+
+## Overview
+
+Loader component to indicate background tasks. The default loader will fill its parent container
+
+<Canvas>
+	<div style={{ width: '500px', height: '500px', border: '2px dashed red' }}>
+		<LoadingOverlay message="Connecting..." />
+	</div>
+</Canvas>
+
+## API
+
+<ArgsTable of={LoadingOverlay} />
+
+## Fullscreen
+
+You may fill the entire screen with the loader to prevent user interaction while something loads.
+
+export const FullScreen = () => {
+	const [show, setShow] = useState(false);
+	const activate = () => {
+		setShow(true);
+		setTimeout(() => setShow(false), 5000);
+	};
+	return (
+		<>
+			<Button onClick={activate}>Show fullscreen loader for 5 secs</Button>
+			{show && (
+				<LoadingOverlay message="Connecting..." fullScreen opacity={0.8} />
+			)}
+		</>
+	);
+};
+
+<Canvas>
+	<FullScreen />
+</Canvas>

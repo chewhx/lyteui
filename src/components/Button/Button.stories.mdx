@@ -1,145 +1,155 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import Button from './Button';
-import ThemeProvider from '../../theme/ThemeProvider';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
+import Badge from '../Badge/Badge';
+import UnstyledButton from './UnstyledButton/UnstyledButton';
 
-<Meta title="Actions/Button" />
+<Meta title="Components/Button" component={Button} />
 
 # Button
 
-## Default Button
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/Button/Button.tsx)
+
+```jsx
+import { Button } from 'lyteui';
+```
+
+## Overview
+
+Use buttons as interactive elements to let users trigger an action. They should be easy to locate among the UI.
 
 <Canvas>
-	<Story name="Default">
-		<Button>LytePay</Button>
-	</Story>
+	<Button>Send invoice</Button>
 </Canvas>
 
-## Theme Colors
+## API
+
+<ArgsTable of={Button} />
+
+## Loading
+
+Present a loading button to indicate that the action has been successfully triggered
 
 <Canvas>
-	<Story name="Colors">
-		{[
-			'primary',
-			'secondary',
-			'success',
-			'info',
-			'warning',
-			'danger',
-			'light',
-			'dark',
-		].map((e) => (
-			<Button key={e} color={e}>
-				{e}
-			</Button>
-		))}
-	</Story>
+	<Button isLoading>LytePay</Button>
+	<Button isLoading loaderPosition="right">
+		LytePay
+	</Button>
 </Canvas>
 
-## Size
+## Button with icon
+
+Provide some graphical context to the action handler
 
 <Canvas>
-	<Story name="Sizes">
-		<Button size="sm">Large</Button>
-		<Button>Large</Button>
-		<Button size="lg">Large</Button>
-	</Story>
+	<Button icon={<FontAwesomeIcon icon={faUser} />}>Update profile</Button>
+	<Button icon={<FontAwesomeIcon icon={faCircleCheck} />}>
+		Accept invoice
+	</Button>
+</Canvas>
+
+## Custom styles for loader and icon
+
+Pass regular props to `loaderWrapperProps` or `iconWrapperProps` to style div containing loader and icon.
+
+<Canvas>
+	<Button
+		icon={<FontAwesomeIcon icon={faUser} />}
+		iconWrapperProps={{ style: { marginRight: '2rem', display: 'inline' } }}
+	>
+		LytePay
+	</Button>
+	<Button
+		icon={<FontAwesomeIcon icon={faUser} />}
+		isLoading
+		spinnerWrapperProps={{
+			style: { padding: '2rem', marginRight: '1rem', display: 'inline' },
+		}}
+	>
+		LytePay
+	</Button>
+</Canvas>
+
+## Theme colors
+
+Apply preset theme colors to the buttons
+
+<Canvas>
+	<Button theme="primary">primary</Button>
+	<Button theme="secondary">secondary</Button>
+	<Button theme="success">success</Button>
+	<Button theme="info">info</Button>
+	<Button theme="warning">warning</Button>
+	<Button theme="danger">danger</Button>
+	<Button theme="light">light</Button>
+	<Button theme="dark">dark</Button>
+</Canvas>
+
+## Variant
+
+Present an outlined button to highlight unique action handlers
+
+<Canvas>
+	<Button variant="outline" theme="primary">
+		primary
+	</Button>
+	<Button variant="outline" theme="secondary">
+		secondary
+	</Button>
+	<Button variant="outline" theme="success">
+		success
+	</Button>
+	<Button variant="outline" theme="info">
+		info
+	</Button>
+	<Button variant="outline" theme="warning">
+		warning
+	</Button>
+	<Button variant="outline" theme="danger">
+		danger
+	</Button>
+	<Button variant="outline" theme="light">
+		light
+	</Button>
+	<Button variant="outline" theme="dark">
+		dark
+	</Button>
+</Canvas>
+
+## Sizes
+
+<Canvas>
+	<Button size="xs">Size X-Small</Button>
+	<Button size="sm">Size Small</Button>
+	<Button>Default</Button>
+	<Button size="lg">Size Large</Button>
+	<Button size="xl">Size X-Large</Button>
 </Canvas>
 
 ## Radius
 
 <Canvas>
-	<Story name="Radius">
-		<Button radius="sm">Sm Radius</Button>
-		<Button>Normal Radius</Button>
-		<Button radius="lg">Lg Radius</Button>
-		<Button radius={22}>22 Radius</Button>
-		<Button radius={10}>10 Radius</Button>
-		<Button radius="15px">15px Radius</Button>
-		<Button radius="1.5rem">1.5rem Radius</Button>
-	</Story>
+	<Button radius="sm">Radius sm</Button>
+	<Button>Default</Button>
+	<Button radius="lg">Radius lg</Button>
 </Canvas>
 
-## Full Width Button
+## Full width button
 
 <Canvas>
-	<Story name="Full Width">
+	<div style={{ width: '100%' }}>
 		<Button size="lg" fullWidth>
 			Full Width Button
 		</Button>
-	</Story>
-</Canvas>
-
-## Custom Colors
-
-<Canvas>
-	<Story name="Custom Colors">
-		<Button color="rgb(250,128,114)">Salmon</Button>
-		<Button color="#00FF00">Lime</Button>
-		<Button color="#00BFFF">Deep Sky Blue</Button>
-		<Button color="rgb(250,128,114)" variant="outline">
-			Salmon
+		<Button
+			size="xl"
+			variant="outline"
+			icon={<FontAwesomeIcon icon={faUser} />}
+			fullWidth
+			style={{ marginTop: '1rem' }}
+		>
+			Cashout
 		</Button>
-		<Button color="#00FF00" variant="outline">
-			Lime
-		</Button>
-		<Button color="#00BFFF" variant="outline">
-			Deep Sky Blue
-		</Button>
-	</Story>
-</Canvas>
-
-## Variant
-
-<Canvas>
-	<Story name="Variant">
-		{[
-			'primary',
-			'secondary',
-			'success',
-			'info',
-			'warning',
-			'danger',
-			'light',
-			'dark',
-		].map((e) => (
-			<Button key={'outline-' + e} variant="outline" color={e}>
-				{e}
-			</Button>
-		))}
-	</Story>
-</Canvas>
-
-## Loading
-
-<Canvas>
-	<Story name="Loading">
-		{[
-			'primary',
-			'secondary',
-			'success',
-			'info',
-			'warning',
-			'danger',
-			'light',
-			'dark',
-		].map((e) => (
-			<>
-				<Button key={'outline-' + e} isLoading variant="outline" color={e}>
-					{e}
-				</Button>
-				<Button key={e} isLoading color={e}>
-					{e}
-				</Button>
-				<Button
-					key={'outline-' + e}
-					isLoading
-					loaderPosition="right"
-					variant="outline"
-					color={e}
-				>
-					{e}
-				</Button>
-			</>
-		))}
-	</Story>
+	</div>
 </Canvas>

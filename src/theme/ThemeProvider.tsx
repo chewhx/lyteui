@@ -4,7 +4,6 @@ import {
 	createGlobalStyle,
 } from 'styled-components';
 import { BootstrapThemeColors } from './constants/BootstrapThemeColors';
-import './importfonts.scss';
 
 const theme = {
 	colors: {

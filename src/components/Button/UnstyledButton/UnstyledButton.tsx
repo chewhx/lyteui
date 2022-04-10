@@ -1,10 +1,10 @@
 import React from 'react';
-import { LyteSizes } from '../../../theme/types/LyteSizes';
+import { DefaultSizes } from '../../../theme/types/DefaultSizes';
 import { StyledUnStyledButton } from './UnstyledButton.styled';
 
 export type UnstyledButtonProps = React.DOMAttributes<HTMLButtonElement> &
 	React.HTMLAttributes<HTMLButtonElement> & {
-		size?: LyteSizes;
+		size?: DefaultSizes;
 		fullWidth?: boolean;
 	};
 

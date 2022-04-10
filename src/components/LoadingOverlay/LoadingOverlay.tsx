@@ -1,63 +1,73 @@
-import React, { DOMAttributes, FC, HTMLAttributes } from 'react';
-import { Image } from 'react-bootstrap';
-import styled from 'styled-components';
-import loadingGif from '../../images/LoadingBlue.gif';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Image from '../Image/Image';
+import loadingGif from '../../../assets/images/LoadingBlue.gif';
+import {
+	LoadingWrapper,
+	Message,
+	StyledOverlay,
+} from './LoadingOverlay.styled';
+import PropTypes from 'prop-types';
 
-const StyledOverlay = styled.div`
-	position: fixed; /* Sit on top of the page content */
-	display: block; /* Hidden by default */
-	width: 100%; /* Full width (cover the whole page) */
-	height: 100%; /* Full height (cover the whole page) */
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	opacity: 1;
-	background-color: var(--bs-white); /* Black background with opacity */
-	z-index: 900; /* Specify a stack order in case you're using a different order for other elements */
-	text-align: center;
-`;
-
-const LoadingWrapper = styled.div`
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	color: white;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%);
-`;
-
-export type LoadingOverlayProps = DOMAttributes<HTMLDivElement> &
-	HTMLAttributes<HTMLDivElement> & {
-		loadingMessage: string;
-		messageProps: HTMLAttributes<HTMLParagraphElement>;
+export type LoadingOverlayProps = React.DOMAttributes<HTMLDivElement> &
+	React.HTMLAttributes<HTMLDivElement> & {
+		/**Message below the wink animation */
+		message?: string;
+		/**Props passed to message paragraph element */
+		messageProps?: React.HTMLAttributes<HTMLParagraphElement>;
+		/**Props passed to wrapper div element containing animation and message */
+		wrapperProps?: React.HTMLAttributes<HTMLDivElement>;
+		/**Props passed to overlay div element */
+		overlayProps?: React.HTMLAttributes<HTMLDivElement>;
+		/**Make loader fullscreen */
+		fullscreen?: boolean;
+		/**Adjust opacity of the loader */
+		opacity?: number;
 	};
 
-const defaultProps = {
-	loadingMessage: 'Loading...',
-	messageProps: {
-		style: {
-			color: 'var(--bs-blue)',
-		},
-	},
+const propTypes = {
+	message: PropTypes.string,
+	messageProps: PropTypes.object,
+	wrapperProps: PropTypes.object,
+	overlayProps: PropTypes.object,
+	fullscreen: PropTypes.bool,
+	opacity: PropTypes.number,
 };
+const defaultProps = {};
 
-const LoadingOverlay: FC<LoadingOverlayProps> = React.forwardRef<
+const LoadingOverlay: React.FC<LoadingOverlayProps> = React.forwardRef<
 	HTMLDivElement,
 	LoadingOverlayProps
->(({ loadingMessage, messageProps, ...props }, ref) => {
-	return (
-		<StyledOverlay {...props} ref={ref}>
-			<LoadingWrapper>
-				<Image src={loadingGif} width={150} />
-				<p className="h3 my-3" {...messageProps}>
-					{loadingMessage || 'Loading...'}
-				</p>
-			</LoadingWrapper>
-		</StyledOverlay>
-	);
-});
+>(
+	(
+		{
+			message,
+			messageProps,
+			wrapperProps,
+			overlayProps,
+			fullscreen: fullScreen,
+		},
+		ref
+	) => {
+		const body = document.body;
+		const container = document.createElement('div');
+		container.setAttribute('id', `loading-overlay-${Date.now()}`);
+		body.appendChild(container);
 
+		const content = (
+			<StyledOverlay {...overlayProps} fullscreen={fullScreen} ref={ref}>
+				<LoadingWrapper {...wrapperProps}>
+					<Image src={loadingGif} fluid />
+					{message && <Message {...messageProps}>{message}</Message>}
+				</LoadingWrapper>
+			</StyledOverlay>
+		);
+
+		return !fullScreen ? content : ReactDOM.createPortal(content, container);
+	}
+);
+
+LoadingOverlay.propTypes = propTypes;
 LoadingOverlay.defaultProps = defaultProps;
 LoadingOverlay.displayName = 'LoadingOverlay';
 export default LoadingOverlay;
