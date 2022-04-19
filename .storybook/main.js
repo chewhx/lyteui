@@ -8,4 +8,5 @@ module.exports = {
 		'@storybook/preset-scss',
 	],
 	framework: '@storybook/react',
+	staticDirs: ['../assets'],
 };

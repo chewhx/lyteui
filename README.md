@@ -93,6 +93,9 @@ Heavily influenced by:
   - [ ] useApi
 - [x] Able to export a global stylesheet and input variables overrides
 - [ ] Add [plop](https://www.npmjs.com/package/plop) to generate template files for components, hooks, functions
+- [ ] Remove react-bootstrap
+- [ ] ❗Curate dependencies - package is too heavy
+- [ ] Add utility classes from bootstrap
 - [ ] Utility functions or helper packages?? (currency.js, dayjs, numeral)
 - [ ] Create a template for feature requests and issue tracker
 - [ ] Standard packages (axios, react-query, formik)

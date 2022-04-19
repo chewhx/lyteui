@@ -8,6 +8,10 @@ import useNotify from '../../hooks/useNotify';
 import useNotifications from '../../hooks/useNotifications';
 import { FontAwesomeIcon as FaIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { ThemeProvider } from '../../theme';
+import toast, { Toaster, useToaster } from 'react-hot-toast';
+import Toast from '../Toast/Toast';
+import ToastProvider from '../ToastProvider/ToastProvider';
 
 export default {
 	title: 'Feedback/Notifications',
@@ -15,83 +19,58 @@ export default {
 } as ComponentMeta<typeof NotificationsProvider>;
 
 const Basic = () => {
-	const notify = useNotify();
-	const notifications = useNotifications();
 	return (
 		<div>
 			<Button
-				variant="warning"
+				theme="success"
 				className="ms-5"
-				onClick={() =>
-					notify.append({
-						type: 'warning',
-						message:
-							'Fusce id.Fusce id.Fusce id.Nulla vitae nulla at nisi tincidunt vestibulum nec eget nisi. Donec congue nunc et facilisis ultrices. Pellentesque ac lectus quis massa eleifend porta id sed mauris. Mauris accumsan lectus a tincidunt maximus.',
-					})
-				}
-			>
-				Warning
-			</Button>
-			<Button
-				variant="success"
-				className="ms-5"
-				onClick={() =>
-					notify.append({
-						type: 'success',
-						message:
-							'Fusce id.Fusce id.Fusce id.Nulla vitae nulla at nisi tincidunt vestibulum nec eget nisi. Donec congue nunc et facilisis ultrices. Pellentesque ac lectus quis massa eleifend porta id sed mauris. Mauris accumsan lectus a tincidunt maximus.',
-					})
-				}
+				onClick={() => toast.success('hello')}
 			>
 				Success
 			</Button>
 			<Button
-				variant="danger"
+				theme="danger"
 				className="ms-5"
-				onClick={() =>
-					notify.append({
-						type: 'error',
-						title: 'Erroron',
-						isAutoClose: false,
-						message: 'Morbi pellentesque.Fusce id.',
-					})
-				}
+				onClick={() => toast.error('hello')}
 			>
 				Error
 			</Button>
 			<Button
-				variant="info"
+				theme="info"
 				className="ms-5"
 				onClick={() =>
-					notify.append({
-						type: 'info',
-						message: 'Morbi pellentesque.Morbi pellentesque.',
-						isAutoClose: false,
-					})
+					toast.promise(
+						(async (n: number) => {
+							const awaitTimeout = (delay: number) =>
+								new Promise((resolve) => setTimeout(resolve, delay));
+							await awaitTimeout(2000);
+							if (n > 100) {
+								return true;
+							} else {
+								throw Error();
+							}
+						})(155),
+						{
+							loading: 'running...',
+							success: 'Got it',
+							error: 'Fail',
+						}
+					)
 				}
 			>
 				Info
 			</Button>
-			<Button
-				variant="primary"
-				className="ms-5"
-				onClick={() =>
-					notify.append({
-						message: 'Morbi pellentesque.Morbi pellentesque.',
-						isAutoClose: false,
-						icon: <FaIcon icon={faUser} />,
-					})
-				}
-			>
-				Icon
-			</Button>
-			<pre>{JSON.stringify(notifications, null, 2)}</pre>
+			{/* <pre>{JSON.stringify(notifications, null, 2)}</pre> */}
 		</div>
 	);
 };
 
-export const Provider = () => (
-	<NotificationsProvider>
-		<Basic />
-	</NotificationsProvider>
-);
+export const Provider = () => {
+	return (
+		<ThemeProvider>
+			<ToastProvider toastOptions={{ duration: 10000 }}>
+				<Basic />
+			</ToastProvider>
+		</ThemeProvider>
+	);
+};
