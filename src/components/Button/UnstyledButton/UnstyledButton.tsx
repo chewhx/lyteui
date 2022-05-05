@@ -1,16 +1,21 @@
 import React from 'react';
-import { DefaultSizes } from '../../../theme/types/DefaultSizes';
 import { StyledUnStyledButton } from './UnstyledButton.styled';
+import { ButtonSize } from './UnstyledButton.types';
+import PropTypes from 'prop-types';
 
 export type UnstyledButtonProps = React.DOMAttributes<HTMLButtonElement> &
 	React.HTMLAttributes<HTMLButtonElement> & {
-		size?: DefaultSizes;
+		size?: ButtonSize;
 		fullWidth?: boolean;
 	};
 
-const defaultProps = {};
+const defaultProps = {
+	size: 'md' as ButtonSize,
+};
 
-const propTypes = {};
+const propTypes = {
+	size: PropTypes.oneOf<ButtonSize>([]),
+};
 
 const UnstyledButton: React.FC<UnstyledButtonProps> = React.forwardRef<
 	HTMLButtonElement,

@@ -1,5 +1,5 @@
 import React from 'react';
-// import ThemeProvider from '../src/theme/ThemeProvider';
+import ThemeProvider from '../src/theme/ThemeProvider';
 import pretty from 'pretty';
 
 export const parameters = {
@@ -15,7 +15,3 @@ export const parameters = {
 		transformSource: (input) => pretty(input),
 	},
 };
-
-// export const decorators = [
-// 	(Canvas) => <ThemeProvider>{Canvas()}</ThemeProvider>,
-// ];

@@ -1,4 +1,4 @@
-export enum RadiusSizes {
+export enum AvatarRadiusSizes {
 	xs = '10%',
 	sm = '15%',
 	md = '25%',
@@ -14,7 +14,7 @@ export enum AvatarSizes {
 	xl = '65px',
 }
 
-export enum FontSizes {
+export enum AvatarFontSizes {
 	xs = '12px',
 	sm = '15px',
 	md = '20px',

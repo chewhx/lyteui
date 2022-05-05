@@ -1,33 +1,36 @@
-import styled, { css } from 'styled-components';
-import { StyledUnStyledButton } from './UnstyledButton/UnstyledButton.styled';
+import styled from 'styled-components';
+import darkenColor from '../../theme/colors/darkenColor';
+import getThemeColor from '../../theme/colors/getThemeColor';
+import { ThemeColorsType } from '../../theme/colors/ThemeColors.type';
 import { ButtonProps } from './Button';
-import darkenColor from '../../utils/darkenColor';
-import isThemeColorType from '../../utils/isThemeColorType';
-import { ThemeColors } from '../../theme/constants/ThemeColors';
+import { ButtonVariant } from './Button.types';
+import { StyledUnStyledButton } from './UnstyledButton/UnstyledButton.styled';
+import getButtonRadius from './getButtonRadius';
 
-const cssBgColor = css<ButtonProps>`
-	${({ theme }) => theme && isThemeColorType(theme) && ThemeColors[theme]}
-`;
-
-const cssHover = css<ButtonProps>`
-	${({ theme }) =>
-		theme && isThemeColorType(theme) && darkenColor(ThemeColors[theme], 0.1)}
-`;
-
-const cssColor = css<ButtonProps>`
-	${({ theme }) => (theme !== 'light' ? ThemeColors.light : ThemeColors.dark)}
-`;
-
-const cssRadius = css<ButtonProps>`
-	${({ radius }) =>
-		radius === 'lg'
-			? '0.65rem'
-			: radius === 'sm'
-			? '0.15rem'
-			: radius === 'md'
-			? '0.35rem'
-			: '0.35rem'}
-`;
+const getButtonThemeColors = (bg: ThemeColorsType, variant: ButtonVariant) => {
+	if (variant === 'filled') {
+		return `
+      background-color: ${getThemeColor(bg)};
+      color: ${bg === 'light' ? getThemeColor('dark') : getThemeColor('light')};
+      &:hover {
+        background-color: ${darkenColor(getThemeColor(bg), 0.1)};
+      }
+    `;
+	}
+	if (variant === 'outline') {
+		return `
+      background-color: ${getThemeColor('white')};
+      color: ${getThemeColor(bg)};
+      border: 1.5px solid ${getThemeColor(bg)};
+      &:hover {
+        background-color: ${getThemeColor(bg)};
+        color: ${
+					bg === 'light' ? getThemeColor('dark') : getThemeColor('white')
+				};
+      }
+    `;
+	}
+};
 
 export const StyledButton = styled(StyledUnStyledButton)<ButtonProps>`
 	&:focus {
@@ -39,22 +42,6 @@ export const StyledButton = styled(StyledUnStyledButton)<ButtonProps>`
 		opacity: 0.65;
 	}
 	box-sizing: border-box;
-	color: ${({ variant, theme }) =>
-		variant === 'outline'
-			? theme !== 'light'
-				? cssBgColor
-				: ThemeColors.dark
-			: cssColor};
-	background-color: ${({ variant }) =>
-		variant === 'outline' ? '#fff' : cssBgColor};
-	border-radius: ${cssRadius};
-	border-width: ${({ variant }) => (variant === 'outline' ? `1.5px` : '0px')};
-	border-style: ${({ variant }) => (variant === 'outline' ? `solid` : 'none')};
-	border-color: ${({ variant }) =>
-		variant === 'outline' ? cssBgColor : 'none'};
-	&:hover {
-		background-color: ${({ variant }) =>
-			variant === 'outline' ? cssBgColor : cssHover};
-		color: ${({ variant }) => (variant === 'outline' ? cssColor : cssColor)};
-	}
+	border-radius: ${({ radius }) => radius && getButtonRadius(radius)};
+	${({ bg, variant }) => bg && variant && getButtonThemeColors(bg, variant)};
 `;

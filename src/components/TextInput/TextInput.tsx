@@ -1,15 +1,14 @@
 import React, { FC, HTMLAttributes, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import { FormLabelProps } from 'react-bootstrap';
 import Input, { InputProps } from '../Input/Input';
 import InputWrapper, { InputWrapperProps } from '../InputWrapper/InputWrapper';
 
 export type TextInputProps = InputProps & {
 	id?: string;
 	label?: ReactNode;
-	labelProps?: FormLabelProps & HTMLAttributes<HTMLLabelElement>;
+	labelProps?: HTMLAttributes<HTMLLabelElement>;
+	inputProps?: InputProps;
 	description?: ReactNode;
-	descriptionPosition?: 'bottom' | 'right';
 	error?: ReactNode;
 	required?: boolean;
 	wrapperProps?: Omit<
@@ -44,9 +43,9 @@ const TextInput: FC<TextInputProps> = React.forwardRef<
 			id,
 			label,
 			labelProps,
+			inputProps,
 			required,
 			description,
-			descriptionPosition,
 			wrapperProps,
 			error,
 			...rest
@@ -62,12 +61,13 @@ const TextInput: FC<TextInputProps> = React.forwardRef<
 				labelProps={labelProps}
 				required={required}
 				description={description}
-				descriptionPosition={descriptionPosition}
 				error={error}
 				{...wrapperProps}
 			>
 				<Input
 					{...rest}
+					{...inputProps}
+					fullWidth
 					id={id}
 					type="text"
 					isInvalid={hasError}

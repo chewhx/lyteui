@@ -22,21 +22,21 @@ const Basic = () => {
 	return (
 		<div>
 			<Button
-				theme="success"
+				bg="success"
 				className="ms-5"
 				onClick={() => toast.success('hello')}
 			>
 				Success
 			</Button>
 			<Button
-				theme="danger"
+				bg="danger"
 				className="ms-5"
 				onClick={() => toast.error('hello')}
 			>
 				Error
 			</Button>
 			<Button
-				theme="info"
+				bg="info"
 				className="ms-5"
 				onClick={() =>
 					toast.promise(

@@ -1,32 +1,8 @@
 import styled, { css } from 'styled-components';
-import { FormRadiusSizes } from '../../theme/constants/RadiusSizes';
+import getInputBorderRadius from './functions/getInputBorderRadius';
+import getInputPadding from './functions/getInputPadding';
+import getInputFontSize from './functions/getInputFontSize';
 import { InputProps } from './Input';
-
-const cssBorderRadius = css<InputProps>`
-	${({ radius }) => (radius ? FormRadiusSizes[radius] : FormRadiusSizes.md)};
-`;
-
-const cssPadding = css<InputProps>`
-	${({ inputSize }) =>
-		inputSize === 'lg'
-			? `0.75rem 1.15rem`
-			: inputSize === 'md'
-			? `0.5rem 0.85rem`
-			: inputSize === 'sm'
-			? `0.35rem 0.55rem`
-			: `0.5rem 0.85rem`}
-`;
-
-const cssFontSize = css<InputProps>`
-	${({ inputSize }) =>
-		inputSize === 'lg'
-			? `1.25rem`
-			: inputSize === 'md'
-			? `1rem`
-			: inputSize === 'sm'
-			? `0.875rem`
-			: `1rem`}
-`;
 
 const cssIsValid = css`
 	border-color: #198754;
@@ -57,21 +33,20 @@ export const StyledInput = styled.input<InputProps>`
 	font-family: Poppins;
 	display: block;
 	width: ${({ fullWidth }) => (fullWidth ? '100%' : '200px')};
-	padding: ${cssPadding};
+	padding: ${({ inputSize }) => inputSize && getInputPadding(inputSize)};
 	height: auto;
-	font-size: ${cssFontSize};
+	font-size: ${({ inputSize }) => inputSize && getInputFontSize(inputSize)};
 	font-weight: 400;
 	line-height: 1.5;
 	color: #212529;
 	background-color: #fff;
 	background-clip: padding-box;
-	border: 2px solid #ced4da;
+	border: 1.5px solid #ced4da;
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
-	border-radius: ${cssBorderRadius};
+	border-radius: ${({ radius }) => radius && getInputBorderRadius(radius)};
 	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-	margin: auto;
 
 	border: ${({ plaintext }) => plaintext && `solid transparent`};
 
@@ -138,7 +113,6 @@ export const StyledInput = styled.input<InputProps>`
 		border-style: solid;
 		border-width: 0;
 		border-inline-end-width: 1px;
-		border-radius: ${cssBorderRadius};
 		transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
 			border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 	}
@@ -181,6 +155,17 @@ export const StyledInput = styled.input<InputProps>`
 	&::-moz-color-swatch {
 		width: 3rem;
 		height: 0.85rem;
+	}
+
+	/* Number Input */
+	&::-webkit-outer-spin-button,
+	&::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	&[type='number'] {
+		-moz-appearance: textfield;
 	}
 
 	${({ isValid }) => isValid && cssIsValid}

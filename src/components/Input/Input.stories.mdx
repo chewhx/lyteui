@@ -1,34 +1,29 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import Input from './Input';
 
 <Meta title="Form/Input" />
 
 # Input
 
-Base input field component.
-
-**To create forms, use other specific input components, and not this directly.**
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/Input/Input.tsx)
 
 ```jsx
 import { Input } from 'lyteui';
 ```
 
-[View source code](https://github.com/chewhx/lyteui/blob/main/src/components/Input/Input.tsx)
+## Overview
 
-| Props      | Type                                         | Default | Description                        |
-| ---------- | -------------------------------------------- | ------- | ---------------------------------- |
-| radius?    | DefaultSizes                                 | "md"    | Adjusts the border-radius.         |
-| readOnly?  | boolean                                      | none    | Disables the input field.          |
-| disabled?  | boolean                                      | none    | Disables the input field.          |
-| plaintext? | boolean                                      | none    | Removes borders and displays text. |
-| htmlSize?  | number                                       | none    | Pass a html size prop to input.    |
-| size?      | "sm" \| "md" \| "lg"                         | "md"    | Adjusts size of input field.       |
-| value?     | string \| string[] \| number                 | none    | Value of input field.              |
-| onChange?  | `React.ChangeEventHandler<HTMLInputElement>` | none    | onChange handler.                  |
-| type?      | Any supported types                          | none    | HTML types for input.              |
-| isValid?   | boolean                                      | none    | Validated state for input.         |
-| isInvalid? | boolean                                      | none    | Error state for input.             |
-| fullWidth? | boolean                                      | none    | Adjusts width to 100%.             |
+Base input field component.
+
+**To create forms, use other specific input components, and not this directly.**
+
+<Canvas>
+	<Input placeholder="Default input field" />
+</Canvas>
+
+## API
+
+<ArgsTable of={Input} />
 
 ## Default
 

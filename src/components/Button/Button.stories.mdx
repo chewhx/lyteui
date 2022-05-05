@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
 import Badge from '../Badge/Badge';
 import UnstyledButton from './UnstyledButton/UnstyledButton';
+import ThemeProvider from '../../theme/ThemeProvider';
 
 <Meta title="Components/Button" component={Button} />
 
@@ -33,6 +34,9 @@ Present a loading button to indicate that the action has been successfully trigg
 
 <Canvas>
 	<Button isLoading>LytePay</Button>
+	<Button isLoading variant="outline">
+		LytePay
+	</Button>
 	<Button isLoading loaderPosition="right">
 		LytePay
 	</Button>
@@ -76,14 +80,14 @@ Pass regular props to `loaderWrapperProps` or `iconWrapperProps` to style div co
 Apply preset theme colors to the buttons
 
 <Canvas>
-	<Button theme="primary">primary</Button>
-	<Button theme="secondary">secondary</Button>
-	<Button theme="success">success</Button>
-	<Button theme="info">info</Button>
-	<Button theme="warning">warning</Button>
-	<Button theme="danger">danger</Button>
-	<Button theme="light">light</Button>
-	<Button theme="dark">dark</Button>
+	<Button bg="primary">primary</Button>
+	<Button bg="secondary">secondary</Button>
+	<Button bg="success">success</Button>
+	<Button bg="info">info</Button>
+	<Button bg="warning">warning</Button>
+	<Button bg="danger">danger</Button>
+	<Button bg="light">light</Button>
+	<Button bg="dark">dark</Button>
 </Canvas>
 
 ## Variant
@@ -91,28 +95,28 @@ Apply preset theme colors to the buttons
 Present an outlined button to highlight unique action handlers
 
 <Canvas>
-	<Button variant="outline" theme="primary">
+	<Button variant="outline" bg="primary">
 		primary
 	</Button>
-	<Button variant="outline" theme="secondary">
+	<Button variant="outline" bg="secondary">
 		secondary
 	</Button>
-	<Button variant="outline" theme="success">
+	<Button variant="outline" bg="success">
 		success
 	</Button>
-	<Button variant="outline" theme="info">
+	<Button variant="outline" bg="info">
 		info
 	</Button>
-	<Button variant="outline" theme="warning">
+	<Button variant="outline" bg="warning">
 		warning
 	</Button>
-	<Button variant="outline" theme="danger">
+	<Button variant="outline" bg="danger">
 		danger
 	</Button>
-	<Button variant="outline" theme="light">
+	<Button variant="outline" bg="light">
 		light
 	</Button>
-	<Button variant="outline" theme="dark">
+	<Button variant="outline" bg="dark">
 		dark
 	</Button>
 </Canvas>
@@ -120,7 +124,6 @@ Present an outlined button to highlight unique action handlers
 ## Sizes
 
 <Canvas>
-	<Button size="xs">Size X-Small</Button>
 	<Button size="sm">Size Small</Button>
 	<Button>Default</Button>
 	<Button size="lg">Size Large</Button>

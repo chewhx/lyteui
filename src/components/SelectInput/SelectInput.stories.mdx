@@ -1,0 +1,25 @@
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
+import SelectInput from './SelectInput';
+
+<Meta title="Form/SelectInput" component={SelectInput} />
+
+# SelectInput
+
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/SelectInput/SelectInput.tsx)
+
+```jsx
+import { SelectInput } from 'lyteui';
+```
+
+## Overview
+
+Description
+
+<Canvas>
+	<SelectInput
+		label="Lyte Ventures"
+		description="This is a description"
+		placeholder="Select one"
+		data={['Advance', 'Boost', 'LyteMoney', 'LytePay', 'Lyte Ventures']}
+	/>
+</Canvas>

@@ -1,55 +1,88 @@
-import React, { DOMAttributes, FC, HTMLAttributes } from 'react';
 import PropTypes from 'prop-types';
-import { Form, FormSelectProps } from 'react-bootstrap';
+import React, { FC } from 'react';
+import { InputRadiusSize, InputSize } from '../Input/Input.types';
+import InputWrapper, { InputWrapperProps } from '../InputWrapper/InputWrapper';
+import makeOptionList from './utils/makeOptionList';
+import { StyledSelect } from './SelectInput.styled';
+import { SelectData } from './SelectInput.types';
 
-type SelectData = {
-	value: string | number;
-	label: string;
-	disabled?: boolean;
-};
-
-type SelectInputProps = FormSelectProps &
-	HTMLAttributes<HTMLSelectElement> &
-	DOMAttributes<HTMLSelectElement> & {
+export type SelectInputProps = InputWrapperProps &
+	React.HTMLAttributes<HTMLSelectElement> &
+	React.DOMAttributes<HTMLSelectElement> & {
+		/**
+		 * Data for select options
+		 */
 		data: SelectData[] | string[];
+		isValid?: boolean;
+		isInvalid?: boolean;
+		fullWidth?: boolean;
+		inputSize?: InputSize;
+		radius?: InputRadiusSize;
+		selectProps?: React.HTMLAttributes<HTMLSelectElement> &
+			React.DOMAttributes<HTMLSelectElement>;
+		wrapperProps?: InputWrapperProps;
 	};
 
-const makeOptsList = (data: SelectData[] | string[]) => {
-	// if (!data.length) return;
-	return data.map((e) => {
-		if (typeof e === 'string') {
-			return <option key={e} value={e} label={e} />;
-		}
-		if ('value' in e && 'label' in e) {
-			return (
-				<option
-					key={e.value}
-					value={e.value}
-					label={e.label}
-					disabled={e.disabled || false}
-				/>
-			);
-		}
-		return;
-	});
+const defaultProps = {
+	inputSize: 'md' as InputSize,
+	radius: 'md' as InputRadiusSize,
 };
-
-const defaultProps = {};
 const propTypes = {
 	placeholder: PropTypes.string,
+	id: PropTypes.string,
+	className: PropTypes.string,
+	label: PropTypes.string,
+	required: PropTypes.bool,
+	error: PropTypes.string,
+	description: PropTypes.string,
+	labelProps: PropTypes.object,
 };
 
 const SelectInput: FC<SelectInputProps> = React.forwardRef<
 	HTMLSelectElement,
 	SelectInputProps
->(({ data, placeholder, ...rest }, ref) => {
-	return (
-		<Form.Select defaultValue={placeholder} {...rest} ref={ref}>
-			<option hidden value={placeholder} label={placeholder} />
-			{data && makeOptsList(data)}
-		</Form.Select>
-	);
-});
+>(
+	(
+		{
+			data,
+			placeholder,
+			id,
+			label,
+			selectProps,
+			description,
+			error,
+			required,
+			wrapperProps,
+			...rest
+		},
+		ref
+	) => {
+		const hasError = error ? true : false;
+
+		return (
+			<InputWrapper
+				{...wrapperProps}
+				label={label}
+				description={description}
+				required={required}
+				error={error}
+				id={id}
+			>
+				<StyledSelect
+					defaultValue={placeholder}
+					{...selectProps}
+					{...rest}
+					fullWidth
+					isInvalid={hasError}
+					ref={ref}
+				>
+					<option hidden value={placeholder} label={placeholder} />
+					{data && makeOptionList(data)}
+				</StyledSelect>
+			</InputWrapper>
+		);
+	}
+);
 
 SelectInput.displayName = 'SelectInput';
 SelectInput.defaultProps = defaultProps;

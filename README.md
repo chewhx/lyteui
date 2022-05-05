@@ -68,20 +68,23 @@ Heavily influenced by:
 ## Todos / Roadmap
 
 - [ ] Produce basic components and tests
+- [ ] Write styled components which are independent of stylesheets
   - [x] UnstyledButton
   - [x] Button
   - [x] Spinner
   - [x] Avatar
-  - [ ] Input
-  - [ ] ThemeProvider
-  - [ ] TypographyProvider
+  - [ ] Input*
   - [ ] TextInput
   - [ ] NumberInput
   - [ ] SelectInput
-  - [ ] LoadingOverlay
   - [ ] Notification
   - [ ] Badge
+    - [ ] InvoiceStatus Badge
+    - [ ] BoostStatus Badge
   - [ ] Pill
+  - [ ] ThemeProvider
+  - [ ] TypographyProvider
+  - [ ] LoadingOverlay
   - [ ] PasswordInput
   - [ ] Dropdown Menu
   - [ ] Popover
@@ -94,6 +97,7 @@ Heavily influenced by:
 - [x] Able to export a global stylesheet and input variables overrides
 - [ ] Add [plop](https://www.npmjs.com/package/plop) to generate template files for components, hooks, functions
 - [ ] Remove react-bootstrap
+- [ ] Create stylesheet from js variables for alternative injection of styles
 - [ ] ❗Curate dependencies - package is too heavy
 - [ ] Add utility classes from bootstrap
 - [ ] Utility functions or helper packages?? (currency.js, dayjs, numeral)

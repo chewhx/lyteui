@@ -3,30 +3,31 @@ import PropTypes from 'prop-types';
 import getInitialsFromName from '../../utils/getInitialsFromName';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleUser } from '@fortawesome/free-regular-svg-icons';
-import { DefaultSizes } from '../../theme/types/DefaultSizes';
 import { StyledAvatar, StyledAvatarImg } from './Avatar.styled';
-import { ThemeColorsType } from '../../theme/types/ThemeColors';
+import { ThemeColorsType } from '../../theme/colors/ThemeColors.type';
+import { AvatarSizes, AvatarRadiusSizes } from './Avatar.types';
 
 export type AvatarProps = React.HTMLAttributes<HTMLDivElement> & {
 	/**Adjusts overall size */
-	size?: DefaultSizes;
+	size?: AvatarSizes;
 	/**Adjusts the border-radius */
-	radius?: DefaultSizes;
+	radius?: AvatarRadiusSizes;
 	/**Change background to a theme color */
-	theme?: ThemeColorsType;
+	bg?: ThemeColorsType;
 	/**URL of profile image  */
 	img?: string;
 };
 
 const defaultProps = {
-	size: 'md' as DefaultSizes,
-	theme: 'primary' as ThemeColorsType,
+	size: 'md' as AvatarSizes,
+	radius: 'xl' as AvatarRadiusSizes,
+	bg: 'primary' as ThemeColorsType,
 };
 
 const propTypes = {
-	size: PropTypes.oneOf<DefaultSizes>([]),
-	radius: PropTypes.oneOf<DefaultSizes>([]),
-	theme: PropTypes.oneOf<ThemeColorsType>([]),
+	size: PropTypes.oneOf<AvatarSizes>([]),
+	radius: PropTypes.oneOf<AvatarRadiusSizes>([]),
+	bg: PropTypes.oneOf<ThemeColorsType>([]),
 	img: PropTypes.string,
 };
 

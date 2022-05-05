@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { StyledButton } from './Button.styled';
 import { UnstyledButtonProps } from './UnstyledButton/UnstyledButton';
 import Spinner from '../Spinner/Spinner';
-import { DefaultSizes } from '../../theme/types/DefaultSizes';
-import { ThemeColorsType } from '../../theme/types/ThemeColors';
-import { ButtonVariant, LoaderPosition } from './Button.types';
+import { ButtonRadius, ButtonVariant, LoaderPosition } from './Button.types';
+import { ThemeColorsType } from '../../theme/colors/ThemeColors.type';
+import { ButtonSize } from './UnstyledButton/UnstyledButton.types';
 
 export type ButtonProps = Omit<UnstyledButtonProps, 'color'> & {
 	/**Shows a spinner and disables the button */
@@ -19,11 +19,11 @@ export type ButtonProps = Omit<UnstyledButtonProps, 'color'> & {
 	/**Renders a different variant */
 	variant?: ButtonVariant;
 	/**Adjusts the border-radius */
-	radius?: DefaultSizes;
+	radius?: ButtonRadius;
 	/**Color button according to theme colors */
-	theme?: ThemeColorsType;
+	bg?: ThemeColorsType;
 	/**Adjusts overall size */
-	size?: DefaultSizes;
+	size?: ButtonSize;
 	/**Displays an icon on the left */
 	icon?: React.ReactNode;
 	/**Props applied to spinner div */
@@ -39,9 +39,9 @@ const propTypes = {
 	loaderPosition: PropTypes.oneOf<LoaderPosition>([]),
 	loadingMessage: PropTypes.string,
 	variant: PropTypes.oneOf<ButtonVariant>([]),
-	radius: PropTypes.oneOf<DefaultSizes>([]),
-	theme: PropTypes.oneOf<ThemeColorsType>([]),
-	size: PropTypes.oneOf<DefaultSizes>([]),
+	radius: PropTypes.oneOf<ButtonRadius>([]),
+	bg: PropTypes.oneOf<ThemeColorsType>([]),
+	size: PropTypes.oneOf<ButtonSize>([]),
 	icon: PropTypes.node,
 	loaderWrapperProps: PropTypes.object,
 	iconWrapperProps: PropTypes.object,
@@ -50,10 +50,10 @@ const propTypes = {
 const defaultProps = {
 	loadingMessage: 'Loading...',
 	loaderPosition: 'left' as LoaderPosition,
-	theme: 'primary' as ThemeColorsType,
+	bg: 'primary' as ThemeColorsType,
 	variant: 'filled' as ButtonVariant,
-	radius: 'md' as DefaultSizes,
-	size: 'md' as DefaultSizes,
+	radius: 'md' as ButtonRadius,
+	size: 'md' as ButtonSize,
 };
 
 const Button: React.FC<ButtonProps> = React.forwardRef<
@@ -68,7 +68,8 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
 			children,
 			disabled,
 			icon,
-			theme,
+			variant,
+			bg,
 			loaderWrapperProps,
 			iconWrapperProps,
 			...rest
@@ -82,7 +83,8 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
 		return (
 			<StyledButton
 				disabled={isLoading || disabled}
-				theme={theme}
+				bg={bg}
+				variant={variant}
 				{...rest}
 				ref={ref}
 			>
@@ -99,7 +101,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
 						style={{ marginRight: '0.5rem', display: 'inline-block' }}
 						{...loaderWrapperProps}
 					>
-						<Spinner />
+						<Spinner size="sm" color={variant === 'outline' ? bg : 'light'} />
 					</div>
 				)}
 				{isLoading ? loadingMessage : children}
@@ -108,7 +110,7 @@ const Button: React.FC<ButtonProps> = React.forwardRef<
 						style={{ marginLeft: '0.5rem', display: 'inline-block' }}
 						{...loaderWrapperProps}
 					>
-						<Spinner />
+						<Spinner size="sm" color={variant === 'outline' ? bg : 'light'} />
 					</div>
 				)}
 			</StyledButton>

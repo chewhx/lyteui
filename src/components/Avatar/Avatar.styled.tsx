@@ -1,34 +1,26 @@
 import styled from 'styled-components';
-import { ThemeColors } from '../../theme/constants/ThemeColors';
-import isThemeColorType from '../../utils/isThemeColorType';
 import { AvatarProps } from './Avatar';
-import { AvatarSizes, FontSizes, RadiusSizes } from './Avatar.enum';
+import getAvatarFontSizes from './functions/getAvatarFontSizes';
+import getAvatarRadius from './functions/getAvatarRadius';
+import getAvatarSizes from './functions/getAvatarSizes';
+import getAvatarThemeColors from './functions/getAvatarThemeColors';
 
 export const StyledAvatar = styled.div<AvatarProps>`
+	/* Background and Color */
+	${({ bg }) => bg && getAvatarThemeColors(bg)}
+
+	/* Height and Width */
+	${({ size }) => size && getAvatarSizes(size)}
+  
+	font-size: ${({ size }) => size && getAvatarFontSizes(size)};
+
+	border-radius: ${({ radius }) => radius && getAvatarRadius(radius)};
+
 	font-family: Poppins;
 	display: inline-flex;
-	width: ${({ size }) => {
-		return size ? AvatarSizes[size] : AvatarSizes.md;
-	}};
-	height: ${({ size }) => {
-		return size ? AvatarSizes[size] : AvatarSizes.md;
-	}};
-	font-size: ${({ size }) => {
-		return size ? FontSizes[size] : FontSizes.md;
-	}};
 	justify-content: center;
 	align-items: center;
-	background-color: ${({ theme }) =>
-		theme && isThemeColorType(theme)
-			? ThemeColors[theme]
-			: ThemeColors.secondary};
 	overflow: hidden;
-	color: ${({ theme }) =>
-		theme === 'dark' ? ThemeColors.light : ThemeColors.dark};
-	border-radius: ${({ radius }) => {
-		return radius ? RadiusSizes[radius] : '0%';
-	}};
-
 	background-image: ${({ img }) => img && `url(${img})`};
 `;
 

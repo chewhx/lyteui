@@ -1,13 +1,16 @@
 import React, { FC, ReactNode, HTMLAttributes } from 'react';
-import { Form, FormGroupProps, FormLabelProps } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import {
+	StyledHelperText,
+	StyledInputWrapper,
+	StyledLabel,
+} from './InputWrapper.styled';
 
-export type InputWrapperProps = FormGroupProps & {
+export type InputWrapperProps = React.HTMLAttributes<HTMLDivElement> & {
 	id?: string;
 	label?: ReactNode;
-	labelProps?: FormLabelProps & HTMLAttributes<HTMLLabelElement>;
+	labelProps?: HTMLAttributes<HTMLLabelElement>;
 	description?: ReactNode;
-	descriptionPosition?: 'bottom' | 'right';
 	error?: ReactNode;
 	required?: boolean;
 };
@@ -18,55 +21,34 @@ const propTypes = {
 };
 
 const InputWrapper: FC<InputWrapperProps> = React.forwardRef<
-	HTMLElement,
+	HTMLDivElement,
 	InputWrapperProps
 >(
 	(
-		{
-			id,
-			label,
-			labelProps,
-			description,
-			descriptionPosition,
-			error,
-			required,
-			children,
-			...rest
-		},
+		{ id, label, labelProps, description, error, required, children, ...rest },
 		ref
 	) => {
 		const styles = {
-			wrapper: {
-				margin: '1.25rem 0',
-			},
-			label: {
-				marginBottom: '0rem',
-			},
 			required: { color: 'red' },
 			error: { color: 'red' },
 		};
 
-		const DescriptionComponent = () =>
-			descriptionPosition === 'right' ? (
-				<small className="m-0 text-muted small ms-2">{description}</small>
-			) : (
-				<p className="m-0 text-muted small mb-1">{description}</p>
-			);
-
 		return (
-			<Form.Group style={styles.wrapper} {...rest} ref={ref}>
+			<StyledInputWrapper {...rest} ref={ref}>
 				{label && (
-					<Form.Label htmlFor={id} style={styles.label} {...labelProps}>
-						{label}
-						{required && <span style={styles.required}>*</span>}
-					</Form.Label>
+					<div style={{ marginBottom: '3px' }}>
+						<StyledLabel htmlFor={id} {...labelProps}>
+							{label}
+							{required && <span style={styles.required}>*</span>}
+						</StyledLabel>
+					</div>
 				)}
-				{description && <DescriptionComponent />}
+				{description && <StyledHelperText>{description}</StyledHelperText>}
 				{children}
 				<small id={`${id}-error-message`} style={styles.error}>
 					{error}
 				</small>
-			</Form.Group>
+			</StyledInputWrapper>
 		);
 	}
 );

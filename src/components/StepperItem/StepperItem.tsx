@@ -45,9 +45,8 @@ const StepperItem: React.FC<StepperItemProps> = React.forwardRef<
 >(({ label, description, ...rest }, ref) => {
 	return (
 		<StyledStepperItem {...rest} ref={ref}>
-			<UnstyledButton style={{ width: 'max-content' }}>
+			<UnstyledButton style={{ width: 'max-content', padding: 0 }}>
 				<div style={{ textAlign: 'left' }}>
-          
 					<h6 style={{ margin: 0 }}>{label}</h6>
 					<small className="text-muted">{description}</small>
 				</div>

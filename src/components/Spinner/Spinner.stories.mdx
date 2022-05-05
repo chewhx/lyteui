@@ -1,29 +1,27 @@
-import { Meta, Canvas, Story } from '@storybook/addon-docs';
+import { Meta, Canvas, Story, ArgsTable } from '@storybook/addon-docs';
 import Spinner from './Spinner';
 
 <Meta title="Components/Spinner" />
 
 # Spinner
 
-Render an animated spinner to indicate something is loading
+[Source code](https://github.com/chewhx/lyteui/blob/main/src/components/Spinner/Spinner.tsx)
 
 ```jsx
 import { Spinner } from 'lyteui';
 ```
 
-[View source code](https://github.com/chewhx/lyteui/blob/main/src/components/Spinner/Spinner.tsx)
+## Overview
 
-| Props  | Type                 | Default   | Description             |
-| ------ | -------------------- | --------- | ----------------------- |
-| theme? | DefaultThemeColors   | "primary" | Change to a theme color |
-| size?  | "sm" \| "md" \| "lg" | "mg"      | Adjusts overall size    |
-
-## Default Spinner
+Render an animated spinner to indicate something is loading
 
 <Canvas>
 	<Spinner />
-	<Spinner style={{ color: 'red' }} />
 </Canvas>
+
+## API
+
+<ArgsTable of={Spinner} />
 
 ## Sizes
 
@@ -31,17 +29,18 @@ import { Spinner } from 'lyteui';
 	<Spinner size="sm" />
 	<Spinner />
 	<Spinner size="lg" />
+	<Spinner size="xl" />
 </Canvas>
 
 ## Theme colors
 
 <Canvas>
-	<Spinner theme="primary" />
-	<Spinner theme="secondary" />
-	<Spinner theme="success" />
-	<Spinner theme="info" />
-	<Spinner theme="warning" />
-	<Spinner theme="danger" />
-	<Spinner theme="light" />
-	<Spinner theme="dark" />
+	<Spinner />
+	<Spinner color="secondary" />
+	<Spinner color="success" />
+	<Spinner color="info" />
+	<Spinner color="warning" />
+	<Spinner color="danger" />
+	<Spinner color="light" />
+	<Spinner color="dark" />
 </Canvas>

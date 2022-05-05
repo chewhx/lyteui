@@ -4,8 +4,10 @@ import {
 	createGlobalStyle,
 } from 'styled-components';
 import { BootstrapThemeColors } from './constants/BootstrapThemeColors';
+import { DEFAULT_THEME_COLORS } from './colors/ThemeColors.enum';
 
 const theme = {
+	themeColors: DEFAULT_THEME_COLORS,
 	colors: {
 		primary: BootstrapThemeColors.primary,
 		secondary: BootstrapThemeColors.secondary,
